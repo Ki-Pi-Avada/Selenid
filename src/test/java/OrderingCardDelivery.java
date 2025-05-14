@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class orderingCardDelivery {
+public class OrderingCardDelivery {
     public String generateData(int days, String pattern) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter
                 .ofPattern(pattern));
@@ -29,6 +29,6 @@ public class orderingCardDelivery {
         $("[data-test-id=phone] input").setValue("+79111111111");
         $("[data-test-id=agreement]").click();
         $$(".button").find(Condition.text("Забронировать")).should(Condition.visible, Duration.ofSeconds(15)).click();
-        $$(".notification__content").find(Condition.text("Встреча успешно забронирована на 15.05.2025"));
+        $$(".notification__content").find(Condition.text("Встреча успешно забронирована на"+ deliveryDate));
     }
 }
