@@ -29,6 +29,7 @@ public class OrderingCardDelivery {
         $("[data-test-id=phone] input").setValue("+79111111111");
         $("[data-test-id=agreement]").click();
         $$(".button").find(Condition.text("Забронировать")).should(Condition.visible, Duration.ofSeconds(15)).click();
-        $$(".notification__content").find(Condition.text("Встреча успешно забронирована на"+ deliveryDate));
+        $(".notification__content").shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.text("Встреча успешно забронирована на "+ deliveryDate));
     }
 }
